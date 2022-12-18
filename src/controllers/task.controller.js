@@ -2,7 +2,6 @@ const pool = require("../db");
 
 const getAllTasks = async (req, res, next) => {
   try {
-    throw new Error("ALGO FUE MAL");
     const allTasks = await pool.query("SELECT * FROM task");
     res.send(allTasks.rows);
   } catch (error) {

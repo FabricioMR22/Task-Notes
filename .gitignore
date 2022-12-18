@@ -1,2 +1,4 @@
 node_modules/
 package-lock.json
+#evitando variables de entorno
+.env
