@@ -3,7 +3,9 @@ const morgan = require('morgan')
 const app = express()
 
 const taskRouter = require('./routes/task.routes')
+
 app.use(morgan('dev'))
+app.use(express.json())
 
 app.use(taskRouter)
 app.listen(4000)
