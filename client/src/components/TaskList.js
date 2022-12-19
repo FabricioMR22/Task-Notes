@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Card, CardContent, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [tasks, setTasks] = useState([]);
+  const navigate = useNavigate();
 
   const loadTasks = async () => {
     const res = await fetch("http://localhost:4000/tasks");
@@ -51,7 +53,7 @@ export default function Navbar() {
               <Button
                 variant="contained"
                 color="inherit"
-                onClick={() => console.log("Edit")}
+                onClick={() => navigate(`/tasks/${task.id}/edit`)}
               >
                 Edit
               </Button>
