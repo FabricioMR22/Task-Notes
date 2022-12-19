@@ -10,6 +10,17 @@ export default function Navbar() {
     setTasks(data);
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`http://localhost:4000/tasks/${id}`, {
+        method: "DELETE",
+      });
+      setTasks(tasks.filter((task) => task.id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     loadTasks();
   }, []);
@@ -23,6 +34,7 @@ export default function Navbar() {
             marginBottom: ".7rem",
             backgroundColor: "#1e272e",
           }}
+          key={task.id}
         >
           <CardContent
             style={{
@@ -46,7 +58,7 @@ export default function Navbar() {
               <Button
                 variant="contained"
                 color="warning"
-                onClick={() => console.log("Delete")}
+                onClick={() => handleDelete(task.id)}
                 style={{ marginLeft: ".5rem" }}
               >
                 Delete
